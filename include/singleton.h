@@ -14,7 +14,7 @@ struct Singleton {
   Singleton&& operator==(const Singleton&& rhs) = delete;
 
   static T& get() {
-    static T;
+    static T t;
     return t;
   }
 };
