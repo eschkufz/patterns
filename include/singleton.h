@@ -13,8 +13,9 @@ struct Singleton {
   Singleton& operator=(const Singleton& rhs) = delete;
   Singleton&& operator==(const Singleton&& rhs) = delete;
 
-  static T& get() {
-    static T t;
+  template <typename ...Args>
+  static T& get(Args... args) {
+    static T t{args...};
     return t;
   }
 };
