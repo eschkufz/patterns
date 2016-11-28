@@ -5,7 +5,7 @@ namespace patterns {
 
 template <typename T>
 struct Singleton {
-  typedef T& reference;
+  typedef T value_type;
 
   Singleton() = delete;
   Singleton(const Singleton& rhs) = delete;
