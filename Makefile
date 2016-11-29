@@ -14,9 +14,13 @@ GTEST_TARGET=bin/gtest
 
 ### Test binaries
 TEST_OBJ=\
+	test/const_pool.o\
 	test/singleton.o
 
 ### Top-level commands
+submodule:
+	git submodule init
+	git submodule update
 all: check
 check: ${GTEST_TARGET}
 	${GTEST_TARGET}
@@ -24,9 +28,6 @@ clean:
 	rm -rf ${GTEST_BUILD_DIR} ${GTEST_TARGET} ${TEST_OBJ} 
 
 ### Build rules
-submodule:
-	git submodule init
-	git submodule update
 %.o: %.cc include/*.h
 	${CXX} ${CXX_FLAGS} ${GTEST_INC} ${INC} -c $< -o $@
 ${GTEST_LIB}: submodule
